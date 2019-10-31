@@ -21,7 +21,7 @@ function install-kernel-source() {
 
 function patch-kernel() {
   (
-    cd linux-${KERNEL_MAJOR}
+    cd linux-hwe-${KERNEL_MAJOR}
     find /patches -type f -iname '*.patch' | sort -n | while read patch_file ; do
       # patch files
       patch -p1 -N < $patch_file || rc=$?
