@@ -46,7 +46,7 @@ function configure-kernel() {
 
 function update-kernel-version() {
   (
-    cd linux-${KERNEL_MAJOR}
+    cd linux-hwe-${KERNEL_MAJOR}
 
     local latest_kernel=$(head -n 1 debian.master/changelog | grep -oP '(?<=\()[^)]+(?=\))')
     local latest_kernel_tag="$(echo $latest_kernel | grep -oP "(?<=\+)${build_tag}$")"
@@ -66,7 +66,7 @@ function update-kernel-version() {
 
 function build-kernel() {
   (
-    cd linux-${KERNEL_MAJOR}
+    cd linux-hwe-${KERNEL_MAJOR}
 
     local build_clean="$BUILD_CLEAN"
     local build_type="$BUILD_TYPE"
