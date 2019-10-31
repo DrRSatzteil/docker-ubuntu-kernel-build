@@ -7,7 +7,8 @@ BUILD_TYPE="${BUILD_TYPE:-fast}"
 BUILD_CLEAN="${BUILD_CLEAN:-n}"
 BUILD_TAG="${BUILD_TAG:-hardcore}"
 DEB_BUILD_OPTIONS=parallel=$(grep 'cpu cores' /proc/cpuinfo | uniq | awk '{print $4}')
-LOCALVERSION=-kirin
+LOCALVERSION=+kirin
+abi_suffix=+kirin
 
 
 function get-latest-kernel-version() {
@@ -83,11 +84,11 @@ function build-kernel() {
     fi
 
     if [[ "${build_type}" == "full" ]]; then
-      fakeroot debian/rules binary skipmodule=true skipabi=true
+      fakeroot debian/rules binary
     elif [[ "${build_type}" == "fast" ]]; then
-      fakeroot debian/rules binary-headers binary-generic binary-perarch skipmodule=true skipabi=true
+      fakeroot debian/rules binary-headers binary-generic binary-perarch
     else
-      fakeroot debian/rules ${build_cmd} skipmodule=true skipabi=true
+      fakeroot debian/rules ${build_cmd}
     fi
   )
 }
