@@ -1,0 +1,36 @@
+diff --git a/Makefile b/Makefile
+index 1fe5d2a..e5928d4 100644
+--- a/Makefile
++++ b/Makefile
+@@ -2,7 +2,7 @@
+ VERSION = 4
+ PATCHLEVEL = 15
+ SUBLEVEL = 18
+-EXTRAVERSION =
++EXTRAVERSION = kirin
+ NAME = Fearless Coyote
+ 
+ # *DOCUMENTATION*
+diff --git a/debian.master/changelog b/debian.master/changelog
+index 6d8d36a..eb7d1e3 100644
+--- a/debian.master/changelog
++++ b/debian.master/changelog
+@@ -1,4 +1,4 @@
+-linux (4.15.0-66.75) bionic; urgency=medium
++linux (4.15.0-66.75-kirin) bionic; urgency=medium
+ 
+   * bionic/linux: 4.15.0-66.75 -proposed tracker (LP: #1846131)
+ 
+diff --git a/drivers/nvme/host/core.c b/drivers/nvme/host/core.c
+index 6cbde30..a8bd71c 100644
+--- a/drivers/nvme/host/core.c
++++ b/drivers/nvme/host/core.c
+@@ -470,7 +470,7 @@ static blk_status_t nvme_setup_discard(struct nvme_ns *ns, struct request *req,
+ 	struct nvme_dsm_range *range;
+ 	struct bio *bio;
+ 
+-	range = kmalloc_array(segments, sizeof(*range), GFP_ATOMIC);
++	range = kmalloc_array(256, sizeof(*range), GFP_ATOMIC);
+ 	if (!range)
+ 		return BLK_STS_RESOURCE;
+ 
