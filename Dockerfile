@@ -7,6 +7,9 @@ RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
 RUN apt-get update >/dev/null
 
 ENV KERNEL_MAJOR=4.4.0
+ENV LOCALVERSION=-kirin
+ENV TZ=Asia/Tokyo
+ENV DEBIAN_FRONTEND noninteractive
 
 # get the latest kernel in the given major release
 RUN apt-cache search linux-image-$KERNEL_MAJOR- | \
