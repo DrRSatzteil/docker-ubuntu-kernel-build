@@ -1,6 +1,8 @@
 FROM ubuntu:16.04
 
-MAINTAINER Naftuli Kay <me@naftuli.wtf>
+MAINTAINER Fx Kirin <fx.kirin@gmail.com>
+
+RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
 
 RUN apt-get update >/dev/null
 
