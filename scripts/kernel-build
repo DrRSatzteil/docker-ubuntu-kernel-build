@@ -6,6 +6,8 @@ KERNEL_MAJOR="${KERNEL_MAJOR:-4.4.0}"
 BUILD_TYPE="${BUILD_TYPE:-fast}"
 BUILD_CLEAN="${BUILD_CLEAN:-n}"
 BUILD_TAG="${BUILD_TAG:-hardcore}"
+DEB_BUILD_OPTIONS=parallel=$(grep 'cpu cores' /proc/cpuinfo | uniq | awk '{print $4}')
+LOCALVERSION=-kirin
 
 
 function get-latest-kernel-version() {
