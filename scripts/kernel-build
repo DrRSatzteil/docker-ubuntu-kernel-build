@@ -81,11 +81,11 @@ function build-kernel() {
     fi
 
     if [[ "${build_type}" == "full" ]]; then
-      fakeroot debian/rules binary
+      fakeroot debian/rules binary skipmodule=true skipabi=true
     elif [[ "${build_type}" == "fast" ]]; then
-      fakeroot debian/rules binary-headers binary-generic binary-perarch
+      fakeroot debian/rules binary-headers binary-generic binary-perarch skipmodule=true skipabi=true
     else
-      fakeroot debian/rules ${build_cmd}
+      fakeroot debian/rules ${build_cmd} skipmodule=true skipabi=true
     fi
   )
 }
