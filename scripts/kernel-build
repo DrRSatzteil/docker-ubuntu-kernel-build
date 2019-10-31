@@ -16,7 +16,7 @@ function get-latest-kernel-version() {
 function install-kernel-source() {
   # source the kernel
   apt-get update >/dev/null
-  apt-get source linux-image-$(get-latest-kernel-version)-generic
+  apt-get source linux-source-${KERNEL_MAJOR}
 }
 
 function patch-kernel() {
