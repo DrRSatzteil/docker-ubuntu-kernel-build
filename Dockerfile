@@ -13,7 +13,7 @@ RUN apt-cache search linux-image-$KERNEL_MAJOR- | \
         grep -ioP "(?<=linux-image-)$KERNEL_MAJOR-\d+(?=-generic)" | sort -r | head -1 > /tmp/kernel-release
 
 RUN apt-get build-dep -y linux-image-$(cat /tmp/kernel-release)-generic >/dev/null && \
-    apt-get install -y fakeroot >/dev/null && \
+    apt-get install -y fakeroot gawk wget kmod dkms bison flex default-jdk >/dev/null && \
     apt-get clean >/dev/null
 
 RUN install --directory -m 0755 /data && \
