@@ -14,7 +14,7 @@ RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
 
 RUN apt-get update >/dev/null
 
-RUN apt-get install software-properties-common
+RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:system76/pop
 
 RUN apt-get update >/dev/null
