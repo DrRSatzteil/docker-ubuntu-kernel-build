@@ -11,6 +11,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN cp /etc/apt/sources.list /etc/apt/sources.list~
 RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
+RUN apt-get install software-properties-common
 RUN add-apt-repository ppa:system76/pop
 
 RUN apt-get update >/dev/null
