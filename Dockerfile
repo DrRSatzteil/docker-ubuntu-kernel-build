@@ -11,8 +11,7 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN cp /etc/apt/sources.list /etc/apt/sources.list~
 RUN sed -Ei 's/^# deb-src /deb-src /' /etc/apt/sources.list
-RUN echo "deb http://ppa.launchpad.net/system76/pop/ubuntu focal main" >> /etc/apt/sources.list
-RUN echo "deb-src http://ppa.launchpad.net/system76/pop/ubuntu focal main" >> /etc/apt/sources.list
+RUN add-apt-repository ppa:system76/pop
 
 RUN apt-get update >/dev/null
 
